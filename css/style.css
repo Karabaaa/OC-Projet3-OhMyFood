@@ -1,0 +1,242 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  background-color: #F3F3F3;
+}
+
+h2 {
+  color: black;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+h4 {
+  font-family: "Shrikhand", cursive;
+  color: white;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#header {
+  height: 63px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+  background-color: white;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1490196078);
+  position: relative;
+  z-index: 10;
+}
+#header .logo {
+  height: 36px;
+}
+
+footer {
+  background-color: #353535;
+  color: white;
+  padding: 22px 25px;
+}
+footer .strong {
+  font-weight: 500;
+}
+footer i {
+  margin-right: 10px;
+}
+
+.btn-purple {
+  color: white;
+  background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+  border-radius: 50px;
+  height: 50px;
+  width: 218px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2509803922);
+  border: none;
+}
+
+.btn-grey {
+  color: black;
+  background-color: #F6F6F6;
+  border-radius: 20px;
+  height: 72px;
+  width: 322px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1490196078);
+  border: none;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 30px;
+  gap: 30px;
+}
+
+.round-purple {
+  background-color: #9356DC;
+  height: 24px;
+  width: 24px;
+  color: white;
+  align-content: center;
+  border-radius: 50%;
+  position: absolute;
+  left: -12px;
+}
+
+.cards {
+  width: 340px;
+  height: 251px;
+  border-radius: 15px;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.cards .image-container {
+  height: 67%;
+  overflow: hidden;
+}
+.cards .image-container img {
+  width: 346px;
+  height: 231px;
+  object-fit: cover;
+  object-position: bottom;
+}
+.cards .card-bottom {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+}
+.cards .card-bottom .card-description {
+  flex-direction: column;
+}
+
+i {
+  z-index: 20;
+}
+
+i:active {
+  color: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+}
+
+.location-container {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2509803922);
+  background-color: #EAEAEA;
+}
+.location-container .fa-location-dot {
+  color: #353535;
+}
+.location-container .location-text {
+  font-size: 16px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+.intro h2 {
+  max-width: 275px;
+  margin-bottom: 10px;
+}
+.intro p {
+  max-width: 315px;
+  margin-bottom: 30px;
+}
+.intro button {
+  margin-bottom: 30px;
+}
+
+.fonctionnement {
+  height: 440px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px;
+}
+.fonctionnement h2 {
+  width: 322px;
+  margin: auto;
+}
+.fonctionnement .buttons-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+.fonctionnement .buttons-container button i {
+  color: #7E7E7E;
+}
+.fonctionnement .buttons-container button:active i, .fonctionnement .buttons-container button:hover i {
+  color: #9356DC;
+}
+
+.restaurants {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 50px 0px;
+}
+.restaurants h2 {
+  width: 340px;
+}
+.restaurants p {
+  font-size: 17px;
+}
+
+/*# sourceMappingURL=style.css.map */
