@@ -43,3 +43,18 @@ i {
             color: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
 
         }
+
+.menu-card {
+    background-color: white;
+    border-radius: 15px;
+    height:70px;
+    width:350px;
+    box-shadow: 0px 4px 15px 0px #00000026;
+    border:none;
+    margin:auto;
+    display:flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;;
+}
