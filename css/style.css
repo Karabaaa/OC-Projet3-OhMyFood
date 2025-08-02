@@ -12,9 +12,6 @@ body {
 
 h2 {
   color: black;
-}
-
-h2 {
   font-size: 24px;
   font-weight: 700;
 }
@@ -98,6 +95,14 @@ footer i {
   font-weight: 500;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2509803922);
   border: none;
+  text-align: center;
+}
+.btn-purple:hover {
+  animation-timing-function: ease-out;
+  animation-duration: 300ms;
+  opacity: 0.85;
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.3490196078);
+  cursor: pointer;
 }
 
 .btn-grey {
@@ -117,6 +122,7 @@ footer i {
   position: relative;
   padding: 0 30px;
   gap: 30px;
+  cursor: pointer;
 }
 
 .round-purple {
@@ -130,16 +136,11 @@ footer i {
   left: -12px;
 }
 
-.btn-white {
-  background-color: white;
-  border-radius: 15px;
-  height: 70px;
-  width: 350px;
-  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.1490196078);
-  border: none;
-  margin: auto;
-  display: flex;
-  padding: 0 15px;
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 }
 
 .cards {
@@ -151,35 +152,80 @@ footer i {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  position: relative;
 }
 .cards .image-container {
-  height: 67%;
+  height: 168px;
   overflow: hidden;
+  position: relative;
 }
 .cards .image-container img {
-  width: 346px;
+  width: 100%;
   height: 231px;
   object-fit: cover;
   object-position: bottom;
+  object-position: center 80%;
+}
+.cards .image-container img.bottom {
+  position: absolute;
+  bottom: 0;
+}
+.cards .image-container .tag {
+  width: 80px;
+  height: 29px;
+  background-color: #99E2D0;
+  color: #008766;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: absolute;
+  right: 13px;
+  top: 13px;
+  border-radius: 2px;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.2509803922);
 }
 .cards .card-bottom {
   padding: 15px 20px;
-  display: flex;
-  flex-direction: row;
   box-sizing: border-box;
-  justify-content: space-between;
-  align-items: center;
-}
-.cards .card-bottom .card-description {
   flex-direction: column;
 }
-
-i {
-  z-index: 20;
+.cards .like-checkbox {
+  display: none;
 }
-
-i:active {
-  color: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
+.cards .heart-label {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 10;
+  position: absolute;
+  right: 20px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cards .heart-label svg {
+  width: 30px;
+  height: 30px;
+}
+.cards .heart-label .heart-path {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+  fill: transparent;
+  stroke: black;
+  stroke-width: 30px;
+}
+.cards .like-checkbox:checked + .heart-label .heart-path {
+  fill: url(#heartGradient);
+  stroke: url(#heartGradient);
 }
 
 .menu-card {
@@ -233,6 +279,9 @@ i:active {
 .intro button {
   margin-bottom: 30px;
 }
+.intro button a {
+  color: white;
+}
 
 .fonctionnement {
   height: 440px;
@@ -278,21 +327,20 @@ i:active {
   font-size: 17px;
 }
 
-.image-container {
+.restaurant-page .image-container {
   height: 275px;
   width: 100%;
   overflow: hidden;
   position: relative;
 }
-.image-container img {
+.restaurant-page .image-container img {
   height: 275px;
   width: 100%;
   object-fit: cover;
-  object-position: bottom;
+  object-position: center;
   z-index: 1;
 }
-
-.main-container {
+.restaurant-page .main-container {
   background-color: #F6F6F6;
   border-radius: 50px 50px 0 0;
   display: flex;
@@ -308,46 +356,72 @@ i:active {
   z-index: 10;
   position: relative;
 }
-
-h1 {
+.restaurant-page h1 {
   font-size: 28px;
   font-family: "Shrikhand", cursive;
   font-weight: 400;
   color: black;
 }
-
-h2 {
+.restaurant-page h2 {
   font-size: 16px;
   font-weight: 300;
 }
-
-h3 {
+.restaurant-page h3 {
   font-size: 18px;
   font-weight: 500;
 }
-
-p {
+.restaurant-page p {
   font-size: 15px;
   font-weight: 300;
 }
-
-.title-container {
+.restaurant-page .title-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  padding: 0px 10px;
+  padding-left: 10px;
+  padding-right: 20px;
   margin-top: 30px;
+  width: 350px;
 }
-
-.price {
+.restaurant-page .title-container .like-checkbox {
+  display: none;
+}
+.restaurant-page .title-container .heart-label {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.restaurant-page .title-container .heart-label svg {
+  width: 30px;
+  height: 30px;
+}
+.restaurant-page .title-container .heart-label .heart-path {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+  fill: transparent;
+  stroke: black;
+  stroke-width: 30px;
+}
+.restaurant-page .title-container .like-checkbox:checked + .heart-label .heart-path {
+  fill: url(#heartGradient);
+  stroke: url(#heartGradient);
+}
+.restaurant-page .price {
   font-size: 15px;
   font-weight: 700;
   color: #353535;
   height: 100%;
 }
-
-.border-bottom {
+.restaurant-page .border-bottom {
   height: 3px;
   width: 40px;
   background-color: #99E2D0;
