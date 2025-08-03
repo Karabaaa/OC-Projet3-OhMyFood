@@ -119,5 +119,67 @@
     padding: 10px;
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 10px;;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+
+    > div:first-child {
+        max-width: 290px;
+        overflow: hidden;
+
+        h3,p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;    
+        }
+    }
+    
+    > div:nth-child(2) {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .check {
+        background-color: $tertiary-color;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        height:70px;
+        width:60px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right:0;
+        bottom:0;
+        transform: translateX(100%); // Caché à droite
+        transition: transform 0.3s ease-in-out;
+
+        .white-round {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: white;
+            color:$tertiary-color;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &:hover,
+    &:focus-within {
+        .check {
+            transform: translateX(0); // Slide in
+        }
+
+        > div:nth-child(2) {
+            transform: translateX(-60px); // Décale le prix
+        }
+
+        > div:first-child {
+            max-width: 230px; // Réduit l’espace pour forcer l’ellipsis
+        }
+    }
 }
