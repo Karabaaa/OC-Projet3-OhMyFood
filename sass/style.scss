@@ -13,7 +13,10 @@
 // COMPONENTS
 @import 'components/buttons';
 @import 'components/cards';
+@import 'components/loader';
+
 
 // PAGES
 @import 'pages/home';
 @import 'pages/restaurant';
+@import 'pages/restaurant.animations';

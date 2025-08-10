@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -95,6 +96,14 @@ footer .strong {
 }
 footer i {
   margin-right: 10px;
+}
+footer .footer-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+footer .footer-link:hover {
+  text-decoration: underline;
 }
 @media screen and (min-width: 768px) {
   footer .footer-container {
@@ -427,6 +436,94 @@ footer i {
   }
 }
 
+/* Overlay plein écran */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #fff;
+  animation: hideLoader 3000ms ease-out forwards;
+}
+
+/* Contenu du loader */
+.loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand {
+  font: 700 1.25rem/1.1 "Shrikhand", cursive;
+  letter-spacing: 0.04em;
+  background: linear-gradient(90deg, #9356DC, #FF79DA);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: pulse 900ms ease-in-out infinite alternate;
+}
+
+/* Anneau qui tourne */
+.ring {
+  width: 72px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  border: 6px solid #e9e9e9;
+  border-top-color: #9356DC;
+  border-right-color: #FF79DA;
+  animation: spin 900ms linear infinite;
+}
+
+/* Le contenu de la page apparaît après le loader */
+.page {
+  opacity: 0;
+  animation: showPage 320ms ease-out 2850ms forwards;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-2px);
+  }
+}
+@keyframes hideLoader {
+  0%, 85% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes showPage {
+  to {
+    opacity: 1;
+  }
+}
+/* Accessibilité : réduit les animations si préférence activée */
+@media (prefers-reduced-motion: reduce) {
+  .ring, .brand {
+    animation: none;
+  }
+  .loader {
+    animation-duration: 200ms;
+  }
+  .page {
+    animation: none;
+    opacity: 1;
+  }
+}
 .location-container {
   height: 50px;
   width: 100%;
@@ -680,6 +777,137 @@ footer i {
   width: 40px;
   background-color: #99E2D0;
   margin-bottom: 10px;
+}
+
+@keyframes slideFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* --------- Stagger par SECTION ---------
+   On scope tout à .restaurant-page pour éviter les effets ailleurs. */
+.restaurant-page {
+  /* Chaque section a la même anim, la diff vient du delay */
+  /* Délais progressifs par section : on pose une var CSS --d sur chaque section,
+     calculée côté Sass, puis on s’en sert pour décaler ses enfants */
+  /* Stagger interne pour les boutons plats (compte les <button> uniquement) */
+  /* Accessibilité */
+}
+.restaurant-page .main-container > .menu-section {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: slideFadeUp 800ms ease-out forwards;
+  will-change: opacity, transform;
+  /* Titre + petite barre apparaissent après la section */
+  /* Les plats (boutons) apparaissent un par un */
+}
+.restaurant-page .main-container > .menu-section > h2,
+.restaurant-page .main-container > .menu-section > .border-bottom {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: slideFadeUp 380ms ease-out forwards;
+}
+.restaurant-page .main-container > .menu-section > h2 {
+  animation-delay: calc(var(--d) + 80ms);
+}
+.restaurant-page .main-container > .menu-section > .border-bottom {
+  animation-delay: calc(var(--d) + 140ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: slideFadeUp 420ms ease-out forwards;
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(1) {
+  --d: 150ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(2) {
+  --d: 1300ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(3) {
+  --d: 2450ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(4) {
+  --d: 3600ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(5) {
+  --d: 4750ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(6) {
+  --d: 5900ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(7) {
+  --d: 7050ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(8) {
+  --d: 8200ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(9) {
+  --d: 9350ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section:nth-of-type(10) {
+  --d: 10500ms;
+  animation-delay: var(--d);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(1) {
+  animation-delay: calc(var(--d) + 180ms + 0ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(2) {
+  animation-delay: calc(var(--d) + 180ms + 110ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(3) {
+  animation-delay: calc(var(--d) + 180ms + 220ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(4) {
+  animation-delay: calc(var(--d) + 180ms + 330ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(5) {
+  animation-delay: calc(var(--d) + 180ms + 440ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(6) {
+  animation-delay: calc(var(--d) + 180ms + 550ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(7) {
+  animation-delay: calc(var(--d) + 180ms + 660ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(8) {
+  animation-delay: calc(var(--d) + 180ms + 770ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(9) {
+  animation-delay: calc(var(--d) + 180ms + 880ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(10) {
+  animation-delay: calc(var(--d) + 180ms + 990ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(11) {
+  animation-delay: calc(var(--d) + 180ms + 1100ms);
+}
+.restaurant-page .main-container > .menu-section .menu-button:nth-of-type(12) {
+  animation-delay: calc(var(--d) + 180ms + 1210ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .restaurant-page .main-container > .menu-section,
+  .restaurant-page .main-container > .menu-section > h2,
+  .restaurant-page .main-container > .menu-section > .border-bottom,
+  .restaurant-page .main-container > .menu-section .menu-button {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
