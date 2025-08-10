@@ -16,6 +16,10 @@
     margin-bottom: 20px;
     position: relative;
 
+     @media screen and (min-width: $breakpoint-tablet) {
+            width: 100%;
+    }
+
 
     .image-container {
         height:168px;
@@ -108,6 +112,8 @@
 
 
 .menu-card {
+    all: unset; // remet tout à zéro
+    cursor: pointer;
     background-color: white;
     border-radius: 15px;
     height:70px;
@@ -116,29 +122,36 @@
     border:none;
     margin:auto;
     display:flex;
+    align-items: end;
     padding: 10px;
-    justify-content: space-between;
-    align-items: flex-end;
     margin-bottom: 10px;
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
 
     > div:first-child {
-        max-width: 290px;
+        flex: 1 1 auto;        // laisse le texte occuper l'espace restant
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
 
         h3,p {
-            white-space: nowrap;
+            @include truncate-text; // si tu crées un mixin pour text-overflow
+            margin: 0;
             overflow: hidden;
+            white-space: nowrap;
             text-overflow: ellipsis;
-            margin: 0;    
+            width: 100%;                /* s'assurer que text-overflow s'applique */
+            display: block;
         }
     }
     
     > div:nth-child(2) {
-        transition: transform 0.3s ease-in-out;
+        flex: 0 0 40px;          /* largeur fixe */
+        background-color: white;
+        padding-left: 10px;
+        transition: margin-right 0.3s ease-in-out;
     }
 
     .check {
@@ -170,16 +183,20 @@
 
     &:hover,
     &:focus-within {
-        .check {
-            transform: translateX(0); // Slide in
-        }
-
+    
         > div:nth-child(2) {
-            transform: translateX(-60px); // Décale le prix
+            margin-right: 60px; // pousse le prix vers la gauche dans le flux
         }
 
-        > div:first-child {
-            max-width: 230px; // Réduit l’espace pour forcer l’ellipsis
+        // animation visuelle de la pastille
+        .check {
+            transform: translateX(0);
         }
+    }
+    
+
+    @media screen and (min-width: $breakpoint-tablet) {
+        max-width: 634px;
+        width:100%;
     }
 }

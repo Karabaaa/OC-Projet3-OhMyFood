@@ -4,6 +4,19 @@ body {
   background-color: #F3F3F3;
 }
 
+.container {
+    @media screen and (min-width: $breakpoint-tablet) {
+      width:100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+    }
+}
 
 h2 {
   color: black;
